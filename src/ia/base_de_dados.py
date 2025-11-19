@@ -10,9 +10,7 @@ class BancoDeSaber:
         self.db = None
 
     def criar_banco(self, lista_dados_normalizados):
-        """
-        Recebe sua lista de dados normalizados (do passo 1) e cria o banco.
-        """
+
         docs = []
         for item in lista_dados_normalizados:
             # Cria um objeto Documento que o LangChain entende

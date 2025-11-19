@@ -12,10 +12,9 @@ def gerarFicha(nome_usuario, nivel, personagem, rag):
     Gera a história do personagem usando RAG e LLM.
     """
 
-    # 1. BUSCA DE CONTEXTO (RAG)
+
     consulta = f"Detalhes sobre a raça {personagem.raca} e a classe {personagem.classe} em D&D 5e"
 
-    # Busca no seu banco vetorial
     contexto_de_lore = rag.buscar_contexto(consulta)
 
     # 2. MONTAGEM DO PROMPT
@@ -48,8 +47,7 @@ def gerarFicha(nome_usuario, nivel, personagem, rag):
     Não invente regras novas, siga o contexto fornecido.
     """
 
-    # 3. INVOCAR A IA (O jeito certo)
-    # Certifique-se que a chave da API está no .env (OPENAI_API_KEY)
+
     llm = ChatGoogleGenerativeAI(
         model="gemini-2.5-flash",  # Ou "gemini-1.5-pro"
         temperature=0.7,
@@ -58,7 +56,6 @@ def gerarFicha(nome_usuario, nivel, personagem, rag):
 
     print("🤖 IA escrevendo a história...")
 
-    # O método .invoke() envia o texto e espera a resposta
     resposta = llm.invoke(prompt)
 
     # Retorna apenas o conteúdo de texto da resposta

@@ -44,11 +44,7 @@ class APIDED:
         return {"count": len(detailed), "results": detailed}
 
     async def get_details_from_indexes(self, endpoint: str,indexes:list) -> dict:
-        """
-                [PARA RACES E CLASSES]
-                Recebe uma lista de índices (nomes) e busca os detalhes
-                de cada um em PARALELO.
-                """
+
         tasks = []
         for index in indexes:
             # Constrói a URL completa, ex: /api/2014/races/elf
@@ -60,9 +56,7 @@ class APIDED:
         print(f"Busca de {endpoint} concluída!")
 
         return {"count": len(detailed_results), "results": detailed_results}
-    # --------------------
-    # MÉTODOS PÚBLICOS
-    # --------------------
+
     async def get_spells(self) -> dict:
         """Pega todas as magias e seus detalhes."""
         return await self.get_details_from_list(self.endpoints["spells"])
@@ -73,7 +67,6 @@ class APIDED:
 
     async def get_races(self, race_indexes: list) -> dict:
         """Pega os detalhes das raças fornecidas na lista de índices."""
-        # Ex: race_indexes = ["elf", "dwarf", "halfling"]
         return await self.get_details_from_indexes(
             self.endpoints["races_base"],
             race_indexes
@@ -81,7 +74,6 @@ class APIDED:
 
     async def get_classes(self, class_indexes: list) -> dict:
         """Pega os detalhes das classes fornecidas na lista de índices."""
-        # Ex: class_indexes = ["fighter", "wizard", "rogue"]
         return await self.get_details_from_indexes(
             self.endpoints["classes_base"],
             class_indexes
